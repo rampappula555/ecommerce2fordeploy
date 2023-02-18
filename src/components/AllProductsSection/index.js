@@ -32,7 +32,7 @@ const AllProductsSection = () => {
         options
       );
       const data = await response.json();
-      console.log(1);
+
       if (response.ok) {
         const updatedData = data.products.map((eachProduct) => ({
           id: eachProduct.id,
