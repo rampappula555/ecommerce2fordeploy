@@ -25,15 +25,25 @@ const App = () => {
         }
       });
       if (duplicateProductIndex !== -1) {
-        const duplicateProduct = prevState.slice(
-          duplicateProductIndex,
-          duplicateProductIndex + 1
-        );
-        prevState.splice(duplicateProductIndex, 1, {
-          ...duplicateProduct[0],
-          quantity: duplicateProduct[0].quantity + product.quantity,
+        // const duplicateProduct = prevState.slice(
+        //   duplicateProductIndex,
+        //   duplicateProductIndex + 1
+        // );
+        // prevState.splice(duplicateProductIndex, 1, {
+        //   ...duplicateProduct[0],
+        //   quantity: duplicateProduct[0].quantity + product.quantity,
+        // });
+        // return [...prevState];
+        const updatedCart = prevState.map((eachItem) => {
+          if (eachItem.id === product.id) {
+            return {
+              ...eachItem,
+              quantity: eachItem.quantity + product.quantity,
+            };
+          }
+          return eachItem;
         });
-        return [...prevState];
+        return updatedCart;
       } else {
         return [...prevState, product];
       }
