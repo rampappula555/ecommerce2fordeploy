@@ -65,6 +65,8 @@ const ProductItemDetails = () => {
 
         setEachProductDetails(updatedData);
         setApiStatus(apiStatusConsts.success);
+      } else {
+        setApiStatus(apiStatusConsts.failure);
       }
     };
     getProductDetails();
@@ -159,6 +161,8 @@ const ProductItemDetails = () => {
       return getProgressView();
     case apiStatusConsts.success:
       return getSuccessView();
+    case apiStatusConsts.failure:
+      return <h1>product not found</h1>;
     default:
       return null;
   }
